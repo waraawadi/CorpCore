@@ -1,0 +1,37 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Votre module <strong>{{ module_name }}</strong> arrive a expiration dans
+    <strong>{{ days_remaining }} jour(s)</strong>.
+  </p>
+
+  <div class="table-wrap">
+    <table class="table" role="presentation" aria-label="Details expiration">
+      <tr>
+        <td>Entreprise</td>
+        <td>{{ tenant_name }}</td>
+      </tr>
+      <tr>
+        <td>Module</td>
+        <td>{{ module_name }}</td>
+      </tr>
+      <tr>
+        <td>Expiration</td>
+        <td>{{ renewal_at }}</td>
+      </tr>
+      <tr>
+        <td>Duree actuelle</td>
+        <td>{{ purchased_months }} mois</td>
+      </tr>
+      <tr>
+        <td>Montant precedent</td>
+        <td>{{ amount_xof }} XOF</td>
+      </tr>
+    </table>
+  </div>
+
+  <p style="margin: 14px 0 0; font-size: 13px; color: #64748b; line-height: 1.6;">
+    Renouvelez avant la date d'expiration pour eviter toute interruption de service.
+  </p>
+{% endblock %}

@@ -1,0 +1,10 @@
+Rappel expiration abonnement
+
+Entreprise: {{ tenant_name }}
+Module: {{ module_name }}
+Expire dans: {{ days_remaining }} jour(s)
+Date d'expiration: {{ renewal_at }}
+Duree actuelle: {{ purchased_months }} mois
+Montant precedent: {{ amount_xof }} XOF
+
+Renouvelez avant la date d'expiration pour eviter toute interruption de service.

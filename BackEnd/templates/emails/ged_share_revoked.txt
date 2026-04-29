@@ -1,0 +1,7 @@
+Bonjour{% if recipient_name %} {{ recipient_name }}{% endif %},
+
+{{ actor_name }} a retire votre acces a {{ item_label }} ({{ tenant_name }}).
+
+Ouvrir le Drive : {{ ged_url }}
+
+Besoin d'aide ? {{ support_email }}

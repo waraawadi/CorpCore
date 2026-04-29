@@ -1,0 +1,9 @@
+Bonjour{% if recipient_name %} {{ recipient_name }}{% endif %},
+
+{{ actor_name }} a modifie vos droits sur {{ item_label }} ({{ tenant_name }}) :
+- Avant : {{ old_role_label }}
+- Maintenant : {{ new_role_label }}
+
+Ouvrir le Drive : {{ ged_url }}
+
+Besoin d'aide ? {{ support_email }}

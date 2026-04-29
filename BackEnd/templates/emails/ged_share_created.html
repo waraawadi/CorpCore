@@ -1,0 +1,13 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    <strong>{{ actor_name }}</strong> vous a donne acces en <strong>{{ role_label }}</strong> sur {{ item_label }}.
+  </p>
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Espace : <strong>{{ tenant_name }}</strong>
+  </p>
+  <p style="margin: 0; font-size: 14px;">
+    <a href="{{ ged_url }}" target="_blank" rel="noopener noreferrer">Ouvrir le Drive GED</a>
+  </p>
+{% endblock %}

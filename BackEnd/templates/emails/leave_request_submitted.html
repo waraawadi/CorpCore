@@ -1,0 +1,33 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #0f172a;">
+    Bonjour,
+  </p>
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    <strong>{{ employee_name }}</strong> a soumis une demande de conge sur <strong>{{ tenant_name }}</strong>.
+  </p>
+  <div class="table-wrap">
+    <table class="table" role="presentation">
+      <tr>
+        <td>Type</td>
+        <td>{{ leave_type }}</td>
+      </tr>
+      <tr>
+        <td>Periode</td>
+        <td>du {{ start_date }} au {{ end_date }}</td>
+      </tr>
+      <tr>
+        <td>Jours</td>
+        <td>{{ days }}</td>
+      </tr>
+      <tr>
+        <td>Motif</td>
+        <td>{{ reason }}</td>
+      </tr>
+    </table>
+  </div>
+  <p style="margin: 14px 0 0; font-size: 14px;">
+    <a href="{{ hr_url }}" target="_blank" rel="noopener noreferrer" style="color: #1e6ee8;">Ouvrir le module RH</a>
+  </p>
+{% endblock %}

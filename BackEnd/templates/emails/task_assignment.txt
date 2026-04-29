@@ -1,0 +1,10 @@
+Bonjour,
+
+Vous etes assigne a une tache:
+- Tache: {{ task_title }}
+- Projet: {{ project_name }}
+- Declenche par: {{ actor_name }}
+- Lien: {{ task_url }}
+
+Besoin d'aide ? {{ support_email }}
+

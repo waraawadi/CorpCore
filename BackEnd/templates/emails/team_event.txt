@@ -1,0 +1,12 @@
+Bonjour,
+
+Une action a ete realisee sur l'equipe {{ team_name }} dans {{ tenant_name }}.
+
+Action: {{ subtitle }}
+Equipe: {{ team_name }}
+Responsable: {{ leader_name }}
+Membres: {{ members_summary }}
+Declenche par: {{ actor_name }}
+
+Besoin d'aide ? {{ support_email }}
+

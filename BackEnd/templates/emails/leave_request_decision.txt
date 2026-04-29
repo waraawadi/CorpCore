@@ -1,0 +1,5 @@
+Conge {{ decision_label }} — {{ tenant_name }}
+
+Votre demande du {{ start_date }} au {{ end_date }} ({{ days }} j.) a ete {{ decision_label }}.
+
+{{ hr_url }}

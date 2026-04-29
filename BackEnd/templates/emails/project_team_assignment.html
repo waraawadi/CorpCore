@@ -1,0 +1,29 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Le projet <strong>{{ project_name }}</strong> a ete affecte a l'equipe <strong>{{ team_name }}</strong>.
+  </p>
+
+  <div class="table-wrap">
+    <table class="table" role="presentation" aria-label="Affectation projet">
+      <tr>
+        <td>Projet</td>
+        <td>{{ project_name }}</td>
+      </tr>
+      <tr>
+        <td>Equipe</td>
+        <td>{{ team_name }}</td>
+      </tr>
+      <tr>
+        <td>Declenche par</td>
+        <td>{{ actor_name }}</td>
+      </tr>
+      <tr>
+        <td>Lien projet</td>
+        <td><a href="{{ project_url }}" target="_blank" rel="noopener noreferrer">{{ project_url }}</a></td>
+      </tr>
+    </table>
+  </div>
+{% endblock %}
+

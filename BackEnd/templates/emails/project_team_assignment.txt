@@ -1,0 +1,9 @@
+Bonjour,
+
+Le projet {{ project_name }} a ete affecte a l'equipe {{ team_name }}.
+
+Declenche par: {{ actor_name }}
+Lien projet: {{ project_url }}
+
+Besoin d'aide ? {{ support_email }}
+

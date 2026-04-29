@@ -1,0 +1,14 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #0f172a;">
+    Bonjour,
+  </p>
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Votre demande de conge du <strong>{{ start_date }}</strong> au <strong>{{ end_date }}</strong>
+    ({{ days }} j.) a ete <strong>{{ decision_label }}</strong> sur <strong>{{ tenant_name }}</strong>.
+  </p>
+  <p style="margin: 14px 0 0; font-size: 14px;">
+    <a href="{{ hr_url }}" target="_blank" rel="noopener noreferrer" style="color: #1e6ee8;">Voir le module RH</a>
+  </p>
+{% endblock %}
