@@ -1,0 +1,36 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #0f172a;">
+    Bonjour,
+  </p>
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Une action a ete realisee sur l'equipe <strong>{{ team_name }}</strong> dans <strong>{{ tenant_name }}</strong>.
+  </p>
+
+  <div class="table-wrap">
+    <table class="table" role="presentation" aria-label="Mise a jour equipe">
+      <tr>
+        <td>Action</td>
+        <td>{{ subtitle }}</td>
+      </tr>
+      <tr>
+        <td>Equipe</td>
+        <td>{{ team_name }}</td>
+      </tr>
+      <tr>
+        <td>Responsable</td>
+        <td>{{ leader_name }}</td>
+      </tr>
+      <tr>
+        <td>Membres</td>
+        <td>{{ members_summary }}</td>
+      </tr>
+      <tr>
+        <td>Declenche par</td>
+        <td>{{ actor_name }}</td>
+      </tr>
+    </table>
+  </div>
+{% endblock %}
+

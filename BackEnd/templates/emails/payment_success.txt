@@ -1,0 +1,11 @@
+Paiement confirme pour {{ tenant_name }}.
+
+Facture: {{ invoice_number }}
+Transaction: {{ transaction_id }}
+Date de confirmation: {{ payment_time }}
+Montant total: {{ total_amount_xof }} XOF
+
+Modules actives:
+{% for line in lines %}
+- {{ line.module_name }}: {{ line.months }} mois, expiration {{ line.renewal_at }}, montant {{ line.line_subtotal_xof }} XOF
+{% endfor %}

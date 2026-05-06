@@ -1,0 +1,10 @@
+Nouvelle demande de conge — {{ tenant_name }}
+
+{{ employee_name }} a soumis une demande.
+
+Type : {{ leave_type }}
+Periode : du {{ start_date }} au {{ end_date }}
+Jours : {{ days }}
+Motif : {{ reason }}
+
+Espace RH : {{ hr_url }}

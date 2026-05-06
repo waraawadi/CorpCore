@@ -1,0 +1,7 @@
+Bonjour{% if recipient_name %} {{ recipient_name }}{% endif %},
+
+{{ actor_name }} vous a donne acces en {{ role_label }} sur {{ item_label }} ({{ tenant_name }}).
+
+Ouvrir le Drive : {{ ged_url }}
+
+Besoin d'aide ? {{ support_email }}

@@ -1,0 +1,29 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Vous etes assigne a une nouvelle tache dans le projet <strong>{{ project_name }}</strong>.
+  </p>
+
+  <div class="table-wrap">
+    <table class="table" role="presentation" aria-label="Affectation tache">
+      <tr>
+        <td>Tache</td>
+        <td>{{ task_title }}</td>
+      </tr>
+      <tr>
+        <td>Projet</td>
+        <td>{{ project_name }}</td>
+      </tr>
+      <tr>
+        <td>Declenche par</td>
+        <td>{{ actor_name }}</td>
+      </tr>
+      <tr>
+        <td>Acceder au projet</td>
+        <td><a href="{{ task_url }}" target="_blank" rel="noopener noreferrer">{{ task_url }}</a></td>
+      </tr>
+    </table>
+  </div>
+{% endblock %}
+
