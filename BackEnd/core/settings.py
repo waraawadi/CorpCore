@@ -47,8 +47,11 @@ TENANT_APPS = [
     "employees",
     "ged",
     "inventory",
+    "sales",
+    "procurement",
     "crm",
     "finance",
+    "support",
     "api",
 ]
 

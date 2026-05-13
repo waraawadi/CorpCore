@@ -9,6 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
+import { cn } from '@/lib/utils'
 
 type DataPaginationProps = {
   totalItems: number
@@ -16,6 +17,7 @@ type DataPaginationProps = {
   pageSize: number
   onPageChange: (page: number) => void
   onPageSizeChange: (size: number) => void
+  className?: string
 }
 
 export function DataPagination({
@@ -24,6 +26,7 @@ export function DataPagination({
   pageSize,
   onPageChange,
   onPageSizeChange,
+  className,
 }: DataPaginationProps) {
   const totalPages = Math.max(1, Math.ceil(totalItems / pageSize))
   const start = totalItems === 0 ? 0 : (page - 1) * pageSize + 1
@@ -39,7 +42,12 @@ export function DataPagination({
   }, [pageSize, onPageSizeChange])
 
   return (
-    <div className="mt-2 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-border/60 bg-card/80 px-2.5 py-2">
+    <div
+      className={cn(
+        'mt-2 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-border/60 bg-card/80 px-2.5 py-2',
+        className,
+      )}
+    >
       <p className="text-xs text-muted-foreground">
         {start}-{end} sur {totalItems}
       </p>

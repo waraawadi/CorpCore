@@ -19,12 +19,31 @@ from finance.views import (
     FinanceReportView,
     FinanceTransactionViewSet,
 )
+from support.views import (
+    SupportDashboardView,
+    SupportTicketCommentViewSet,
+    SupportTicketViewSet,
+)
 from inventory.views import (
     InventoryAssetReferenceViewSet,
     InventoryCategoryViewSet,
     InventoryItemViewSet,
     InventoryLocationViewSet,
     InventoryMovementViewSet,
+)
+from procurement.views import (
+    ProcurementPurchaseOrderLineViewSet,
+    ProcurementPurchaseOrderViewSet,
+    ProcurementPurchaseRequestLineViewSet,
+    ProcurementPurchaseRequestViewSet,
+    ProcurementSupplierViewSet,
+)
+from sales.views import (
+    SalesCustomerViewSet,
+    SalesOrderLineViewSet,
+    SalesOrderViewSet,
+    SalesProductViewSet,
+    SalesStockMovementViewSet,
 )
 from employees.views import (
     ContractViewSet,
@@ -83,6 +102,20 @@ router.register("inventory/locations", InventoryLocationViewSet, basename="inven
 router.register("inventory/items", InventoryItemViewSet, basename="inventory-items")
 router.register("inventory/movements", InventoryMovementViewSet, basename="inventory-movements")
 router.register("inventory/assets", InventoryAssetReferenceViewSet, basename="inventory-assets")
+router.register("sales/customers", SalesCustomerViewSet, basename="sales-customers")
+router.register("sales/products", SalesProductViewSet, basename="sales-products")
+router.register("sales/orders", SalesOrderViewSet, basename="sales-orders")
+router.register("sales/order-lines", SalesOrderLineViewSet, basename="sales-order-lines")
+router.register("sales/stock-movements", SalesStockMovementViewSet, basename="sales-stock-movements")
+router.register("procurement/suppliers", ProcurementSupplierViewSet, basename="procurement-suppliers")
+router.register("procurement/requests", ProcurementPurchaseRequestViewSet, basename="procurement-requests")
+router.register(
+    "procurement/request-lines", ProcurementPurchaseRequestLineViewSet, basename="procurement-request-lines"
+)
+router.register("procurement/orders", ProcurementPurchaseOrderViewSet, basename="procurement-orders")
+router.register(
+    "procurement/order-lines", ProcurementPurchaseOrderLineViewSet, basename="procurement-order-lines"
+)
 router.register("crm/contacts", CrmContactViewSet, basename="crm-contacts")
 router.register("crm/leads", CrmLeadViewSet, basename="crm-leads")
 router.register("crm/opportunities", CrmOpportunityViewSet, basename="crm-opportunities")
@@ -93,12 +126,15 @@ router.register("finance/transactions", FinanceTransactionViewSet, basename="fin
 router.register("finance/invoices", FinanceInvoiceViewSet, basename="finance-invoices")
 router.register("finance/invoice-lines", FinanceInvoiceLineViewSet, basename="finance-invoice-lines")
 router.register("finance/documents", FinanceDocumentViewSet, basename="finance-documents")
+router.register("support/tickets", SupportTicketViewSet, basename="support-tickets")
+router.register("support/comments", SupportTicketCommentViewSet, basename="support-comments")
 
 urlpatterns = [
     path("health/", HealthCheckView.as_view(), name="health-check"),
     path("crm/dashboard/", CrmDashboardView.as_view(), name="crm-dashboard"),
     path("finance/dashboard/", FinanceDashboardView.as_view(), name="finance-dashboard"),
     path("finance/reports/", FinanceReportView.as_view(), name="finance-reports"),
+    path("support/dashboard/", SupportDashboardView.as_view(), name="support-dashboard"),
     path("company/profile/", CompanyProfileView.as_view(), name="company-profile"),
     path("billing/", include("subscriptions.urls")),
     path("public/world/", include("worlddata.urls")),

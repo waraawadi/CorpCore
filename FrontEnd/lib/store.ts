@@ -603,6 +603,7 @@ export const useStore = create<ProjectStore>()(
       onboardingResult: null,
       uiState: {
         sidebarOpen: true,
+        sidebarDesktopMode: 'expanded' as UIState['sidebarDesktopMode'],
         darkMode: false,
         viewMode: 'dashboard' as UIState['viewMode'],
       },

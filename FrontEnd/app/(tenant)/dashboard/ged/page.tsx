@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { useStore } from '@/lib/store'
 import { getApiBaseUrl, formatApiErrorBody } from '@/lib/api'
 import { notify } from '@/lib/notify'
@@ -259,6 +260,8 @@ async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export default function GedPage() {
+  const searchParams = useSearchParams()
+  const searchFromUrl = searchParams.get('search') || ''
   const authUser = useStore((s) => s.authUser)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -313,6 +316,12 @@ export default function GedPage() {
   const audioSourceElementRef = useRef<HTMLAudioElement | null>(null)
   const audioFreqRef = useRef<Uint8Array | null>(null)
   const audioRafRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    if (searchFromUrl) {
+      setDocSearch(searchFromUrl)
+    }
+  }, [searchFromUrl])
 
   const loadFolders = useCallback(async () => {
     const params = new URLSearchParams()

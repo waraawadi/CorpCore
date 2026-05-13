@@ -109,8 +109,12 @@ export interface KanbanColumn {
   taskIds: string[]
 }
 
+export type SidebarDesktopMode = 'expanded' | 'icons' | 'hidden'
+
 export interface UIState {
   sidebarOpen: boolean
+  /** Affichage du menu sur desktop (md+). Mobile: utiliser sidebarOpen. */
+  sidebarDesktopMode: SidebarDesktopMode
   darkMode: boolean
   selectedProjectId?: string
   selectedTaskId?: string

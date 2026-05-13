@@ -1,0 +1,14 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Votre demande d'achat <strong>{{ request_reference }}</strong> sur <strong>{{ tenant_name }}</strong> a ete
+    <strong>{% if approved %}approuvee{% else %}rejetee{% endif %}</strong>.
+  </p>
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Titre : {{ request_title }}
+  </p>
+  <p style="margin: 14px 0 0; font-size: 14px;">
+    <a href="{{ procurement_url }}" target="_blank" rel="noopener noreferrer" style="color: #1e6ee8;">Voir la demande</a>
+  </p>
+{% endblock %}

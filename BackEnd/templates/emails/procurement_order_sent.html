@@ -1,0 +1,19 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    Bonjour <strong>{{ supplier_name }}</strong>,
+  </p>
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    <strong>{{ tenant_name }}</strong> vous adresse le bon de commande <strong>{{ order_reference }}</strong>
+    pour un montant total de <strong>{{ total_amount }}</strong> (devise du tenant).
+  </p>
+  <div class="table-wrap">
+    <table class="table" role="presentation">
+      <tr><td>Notes</td><td>{{ notes }}</td></tr>
+    </table>
+  </div>
+  <p style="margin: 14px 0 0; font-size: 13px; color: #64748b;">
+    Ce message est genere automatiquement. Pour toute question, repondez a l'adresse {{ support_email }}.
+  </p>
+{% endblock %}

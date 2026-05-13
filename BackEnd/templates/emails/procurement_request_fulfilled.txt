@@ -1,0 +1,7 @@
+Bonjour,
+
+La demande {{ request_reference }} a ete transformee en bon de commande {{ order_reference }} sur {{ tenant_name }}.
+
+Ouvrir les bons : {{ procurement_url }}
+
+Besoin d'aide ? {{ support_email }}

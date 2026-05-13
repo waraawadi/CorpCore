@@ -806,6 +806,18 @@ export default function FinanceReportsPage() {
                   </Pie>
                   </PieChart>
                 </ChartContainer>
+                <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                  {categoryChartData.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">Aucune catégorie à afficher.</p>
+                  ) : (
+                    categoryChartData.map((entry) => (
+                      <div key={`legend-${entry.name}`} className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: entry.color }} />
+                        <span className="max-w-[140px] truncate">{entry.name}</span>
+                      </div>
+                    ))
+                  )}
+                </div>
                 <div className="mt-3 max-h-56 space-y-2 overflow-y-auto pr-1">
                   {report.by_category.length === 0 ? (
                     <p className="text-sm text-muted-foreground">Aucune donnée.</p>
@@ -836,6 +848,16 @@ export default function FinanceReportsPage() {
                     <Bar dataKey="expense" fill="var(--color-expense)" radius={4} maxBarSize={isMobile ? 18 : 28} />
                   </BarChart>
                 </ChartContainer>
+                <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#0F6E56]" />
+                    Revenus
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#B91C1C]" />
+                    Dépenses
+                  </span>
+                </div>
                 <div className="mt-3 max-h-56 space-y-2 overflow-y-auto pr-1">
                   {monthlyGrouped.length === 0 ? (
                     <p className="text-sm text-muted-foreground">Aucune donnée.</p>

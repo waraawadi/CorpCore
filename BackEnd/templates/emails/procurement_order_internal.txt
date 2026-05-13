@@ -1,0 +1,10 @@
+{{ headline }} — {{ tenant_name }}
+
+Reference BC : {{ order_reference }}
+Fournisseur : {{ supplier_name }}
+Statut : {{ status }}
+Montant : {{ total_amount }}
+
+Ouvrir les bons : {{ procurement_url }}
+
+Besoin d'aide ? {{ support_email }}

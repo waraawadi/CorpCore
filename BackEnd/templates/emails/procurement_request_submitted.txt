@@ -1,0 +1,10 @@
+Bonjour,
+
+{{ actor_name }} a soumis une demande d'achat sur {{ tenant_name }}.
+
+Reference : {{ request_reference }}
+Titre : {{ request_title }}
+
+Ouvrir les demandes : {{ procurement_url }}
+
+Besoin d'aide ? {{ support_email }}

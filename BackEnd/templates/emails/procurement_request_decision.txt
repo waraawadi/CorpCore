@@ -1,0 +1,9 @@
+Bonjour,
+
+Votre demande d'achat {{ request_reference }} sur {{ tenant_name }} a ete {{ decision_label }}.
+
+Titre : {{ request_title }}
+
+Voir la demande : {{ procurement_url }}
+
+Besoin d'aide ? {{ support_email }}

@@ -1,6 +1,7 @@
 'use client'
 
 import { Sidebar } from '@/components/sidebar'
+import { BottomNav } from '@/components/bottom-nav'
 import { Topbar } from '@/components/topbar'
 import { useStore } from '@/lib/store'
 import { useEffect } from 'react'
@@ -53,11 +54,12 @@ export default function TenantLayout({
         <Topbar />
 
         {/* Page Content — min-h-0 pour que les pages (ex. Kanban) puissent remplir et scroller en interne */}
-        <main className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
+        <main className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto pb-16 md:pb-0">
           <div className="container-fluid flex h-full min-h-0 min-w-0 flex-col overflow-x-hidden">
             {children}
           </div>
         </main>
+        <BottomNav />
       </div>
     </div>
   )

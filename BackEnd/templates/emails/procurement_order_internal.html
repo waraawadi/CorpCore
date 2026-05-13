@@ -1,0 +1,18 @@
+{% extends "emails/base.html" %}
+
+{% block email_body %}
+  <p style="margin: 0 0 12px; font-size: 14px; color: #334155; line-height: 1.6;">
+    {{ headline }} — <strong>{{ tenant_name }}</strong>
+  </p>
+  <div class="table-wrap">
+    <table class="table" role="presentation">
+      <tr><td>Reference BC</td><td>{{ order_reference }}</td></tr>
+      <tr><td>Fournisseur</td><td>{{ supplier_name }}</td></tr>
+      <tr><td>Statut</td><td>{{ status }}</td></tr>
+      <tr><td>Montant</td><td>{{ total_amount }}</td></tr>
+    </table>
+  </div>
+  <p style="margin: 14px 0 0; font-size: 14px;">
+    <a href="{{ procurement_url }}" target="_blank" rel="noopener noreferrer" style="color: #1e6ee8;">Ouvrir les bons de commande</a>
+  </p>
+{% endblock %}

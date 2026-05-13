@@ -1,0 +1,7 @@
+Bonjour {{ supplier_name }},
+
+{{ tenant_name }} vous adresse le bon de commande {{ order_reference }} pour un montant total de {{ total_amount }}.
+
+Notes : {{ notes }}
+
+Pour toute question : {{ support_email }}

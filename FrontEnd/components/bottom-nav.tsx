@@ -7,6 +7,7 @@ import {
   AnimatedActivityIcon,
   AnimatedArrowDownUpIcon,
   AnimatedBoxesIcon,
+  AnimatedCreditCardIcon,
   AnimatedFolderOpenIcon,
   AnimatedHouseIcon,
   AnimatedLayoutGridIcon,
@@ -24,6 +25,7 @@ import {
   FinanceReportsNavIcon,
   FinanceTransactionsNavIcon,
 } from '@/components/crm-animate-icons';
+import { Headphones } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function BottomNav() {
@@ -81,6 +83,26 @@ export function BottomNav() {
     { id: 'fin-reports', href: '/dashboard/finance/reports', icon: FinanceReportsNavIcon, label: 'Rapports' },
   ];
 
+  const salesItems = [
+    { id: 'sales-home', href: '/dashboard/sales', icon: AnimatedCreditCardIcon, label: 'Ventes' },
+    { id: 'sales-customers', href: '/dashboard/sales/customers', icon: AnimatedUsersIcon, label: 'Clients' },
+    { id: 'sales-products', href: '/dashboard/sales/products', icon: AnimatedBoxesIcon, label: 'Produits' },
+    { id: 'sales-orders', href: '/dashboard/sales/orders', icon: AnimatedLayoutListIcon, label: 'Commandes' },
+    { id: 'sales-invoices', href: '/dashboard/sales/invoices', icon: AnimatedCreditCardIcon, label: 'Facture' },
+  ];
+
+  const procurementItems = [
+    { id: 'proc-home', href: '/dashboard/procurement', icon: AnimatedLayoutGridIcon, label: 'Achats' },
+    { id: 'proc-suppliers', href: '/dashboard/procurement/suppliers', icon: AnimatedUsersIcon, label: 'Fourn.' },
+    { id: 'proc-requests', href: '/dashboard/procurement/requests', icon: AnimatedLayoutListIcon, label: 'Demandes' },
+    { id: 'proc-orders', href: '/dashboard/procurement/orders', icon: AnimatedArrowDownUpIcon, label: 'BC' },
+  ];
+
+  const supportItems = [
+    { id: 'support-home', href: '/dashboard/support', icon: Headphones, label: 'Support' },
+    { id: 'support-tickets', href: '/dashboard/support/tickets', icon: AnimatedLayoutListIcon, label: 'Tickets' },
+  ];
+
   const defaultDashboardItems = [
     { id: 'default-dashboard', href: '/dashboard', icon: AnimatedLayoutGridIcon, label: 'Tableau' },
     { id: 'default-projects', href: '/dashboard/projects', icon: AnimatedFolderOpenIcon, label: 'Projets' },
@@ -101,6 +123,9 @@ export function BottomNav() {
     if (pathname.startsWith('/dashboard/finance')) return financeItems;
     if (pathname.startsWith('/dashboard/ged')) return gedItems;
     if (pathname.startsWith('/dashboard/crm')) return crmItems;
+    if (pathname.startsWith('/dashboard/sales')) return salesItems;
+    if (pathname.startsWith('/dashboard/procurement')) return procurementItems;
+    if (pathname.startsWith('/dashboard/support')) return supportItems;
     if (pathname.startsWith('/dashboard/billing') || pathname.startsWith('/dashboard/settings')) return adminItems;
     return defaultDashboardItems;
   };
@@ -108,7 +133,12 @@ export function BottomNav() {
   const visibleItems = getVisibleItems().slice(0, 5);
 
   const isItemActive = (href: string) => {
-    if (href === '/dashboard' || href === '/dashboard/inventory' || href === '/dashboard/crm') {
+    if (
+      href === '/dashboard' ||
+      href === '/dashboard/inventory' ||
+      href === '/dashboard/crm' ||
+      href === '/dashboard/support'
+    ) {
       return pathname === href;
     }
     return pathname === href || pathname.startsWith(`${href}/`);

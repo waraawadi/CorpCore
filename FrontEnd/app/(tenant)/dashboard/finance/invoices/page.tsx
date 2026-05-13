@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import {
   createFinanceInvoice,
   createFinanceInvoiceLine,
@@ -27,6 +28,8 @@ import { useStore } from '@/lib/store'
 import { formatMoneyWithCurrencySuffix, normalizeCurrencyCode } from '@/lib/currency'
 
 export default function FinanceInvoicesPage() {
+  const searchParams = useSearchParams()
+  const queryFromUrl = searchParams.get('query') || ''
   const tenant = useStore((s) => s.tenant)
   const tenantCurrency = normalizeCurrencyCode(tenant.currencyCode)
   const [rows, setRows] = useState<FinanceInvoice[]>([])
@@ -78,6 +81,12 @@ export default function FinanceInvoicesPage() {
   useEffect(() => {
     void load()
   }, [])
+
+  useEffect(() => {
+    if (queryFromUrl) {
+      setQuery(queryFromUrl)
+    }
+  }, [queryFromUrl])
 
   const resetForm = () => {
     const today = new Date().toISOString().slice(0, 10)

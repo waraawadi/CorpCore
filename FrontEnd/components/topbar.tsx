@@ -1,6 +1,7 @@
 'use client'
 
 import { useStore } from '@/lib/store'
+import { useIsMobile } from '@/hooks/use-mobile'
 import { Search, Bell, Menu, Moon, Sun, ChevronDown, LayoutGrid, Users, LogOut, Building2 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -17,9 +18,14 @@ import {
 import { useRouter } from 'next/navigation'
 
 export function Topbar() {
+  const isMobile = useIsMobile()
   const {
     toggleSidebar,
+    updateUIState,
+    uiState,
     authUser,
+    authChecked,
+    isAuthLoading,
     isAuthenticated,
     logout,
     notifications,
@@ -39,13 +45,13 @@ export function Topbar() {
   }, [])
 
   useEffect(() => {
-    if (!isAuthenticated) return
+    if (!authChecked || isAuthLoading || !isAuthenticated) return
     void hydrateNotifications()
     const interval = setInterval(() => {
       void hydrateNotifications()
     }, 30000)
     return () => clearInterval(interval)
-  }, [isAuthenticated, hydrateNotifications])
+  }, [authChecked, isAuthLoading, isAuthenticated, hydrateNotifications])
 
   const toggleDarkMode = () => {
     if (!mounted) return
@@ -62,6 +68,8 @@ export function Topbar() {
     : 'Profil'
 
   if (!mounted) return null
+
+  const desktopSidebarMode = uiState.sidebarDesktopMode ?? 'expanded'
 
   const formatRelative = (value: string) => {
     const date = new Date(value)
@@ -80,12 +88,26 @@ export function Topbar() {
       <div className="flex items-center justify-between h-16 px-4 md:px-6">
         {/* Left: Menu + Search */}
         <div className="flex items-center gap-4 flex-1">
-          <button
-            onClick={toggleSidebar}
-            className="md:hidden p-2 hover:bg-accent rounded-lg transition-colors"
-          >
-            <Menu className="w-5 h-5 text-foreground" />
-          </button>
+          {isMobile ? (
+            <button
+              type="button"
+              onClick={toggleSidebar}
+              className="p-2 hover:bg-accent rounded-lg transition-colors md:hidden"
+              aria-label="Ouvrir le menu"
+            >
+              <Menu className="w-5 h-5 text-foreground" />
+            </button>
+          ) : null}
+          {!isMobile && desktopSidebarMode === 'hidden' ? (
+            <button
+              type="button"
+              onClick={() => updateUIState({ sidebarDesktopMode: 'expanded' })}
+              className="hidden md:flex p-2 hover:bg-accent rounded-lg transition-colors"
+              aria-label="Afficher le menu"
+            >
+              <Menu className="w-5 h-5 text-foreground" />
+            </button>
+          ) : null}
 
           <div className="hidden md:flex relative flex-1 max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
